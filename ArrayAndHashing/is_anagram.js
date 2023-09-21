@@ -19,6 +19,7 @@ Output: false
 
  */
 
+// method 1
 const isAnagram = (s, t) => {
   if (s.length !== t.length) return false;
   t = t.toLowerCase();
@@ -32,6 +33,28 @@ const isAnagram = (s, t) => {
   for (let i = 0; i < t.length; i++) resS[s.charCodeAt(i) - 97] += 1;
 
   return JSON.stringify(resT) === JSON.stringify(resS);
+};
+
+
+// the time complexity for this method is O(n) and the space complexity is O(n);
+const isAnagram2 = (s, t) => {
+  if (s.length !== t.length) return false;
+
+  const hashMap = new Map();
+  for (let item of s) {
+    hashMap.set(item, (hashMap.get(item) || 0) + 1);
+  }
+
+  for (let item of t) {
+    const found = hashMap.get(item);
+    switch (found) {
+      case undefined:
+      case 0:
+        return false;
+      default:
+        hashMap.set(item, found - 1);
+    }
+  }
 };
 
 let s = "anagram",
