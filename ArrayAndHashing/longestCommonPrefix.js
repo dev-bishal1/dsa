@@ -49,7 +49,7 @@ const longestCommonPrefix2 = (strs) => {
 };
 
 let strs = ["cir", "car"];
-console.log(longestCommonPrefix2(strs));
+console.log(longestCommonPrefix(strs));
 
 /**
  * 
